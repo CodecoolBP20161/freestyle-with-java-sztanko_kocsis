@@ -1,22 +1,21 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-/**
- * Created by code on 2016.10.24..
- */
+import java.sql.*;
 
 
-    public class DatabaseConnection {
+public class DatabaseConnection {
 
-    static final String URL = "jdbc:postgresql://localhost/";
-    static final String DRIVER = "org.postgresql.Driver";
+        private String URL;
+        private String DRIVER;
+        private String username;
+        private String password;
 
-    static final String username = "code";
-    static final String password = "code";
+    public DatabaseConnection(){
+        this.DRIVER = "org.postgresql.Driver";
+        this.URL = "jdbc:postgresql://localhost/passwordmanager3000";
+        this.username = "code";
+        this.password = "code";
+    }
 
-    public  static Statement connect(){
+    public  Statement connect(){
         Connection conn = null;
         Statement stmt = null;
 
@@ -39,8 +38,8 @@ import java.sql.Statement;
     }
 
 
-    public static void createDatabase(String databaseName){
-        Statement stmt = DatabaseConnection.connect();
+    public  void createDatabase(String databaseName){
+        Statement stmt = this.connect();
         String sql = "CREATE DATABASE " + databaseName;
         try {
             stmt.executeUpdate(sql);
@@ -49,9 +48,48 @@ import java.sql.Statement;
         }
     }
 
-    public static void main(String[] args){
-        DatabaseConnection.createDatabase("NEW");
+    public void execute(String query){
+        Statement stmt = this.connect();
+        try {
+            ResultSet results = stmt.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void createTable(){
+        Statement stmt = this.connect();
+        String sql = "CREATE TABLE userdata "+
+                "(title VARCHAR(255), " +
+                " username VARCHAR(255), " +
+                " pass VARCHAR(255), " +
+                " url VARCHAR(255), " +
+                " note VARCHAR(255));";
+        try {
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    public void insert(String newTitle, String newUsername, String newPassword, String newUrl, String newNote){
+        Statement stmt = this.connect();
+        String sql = "INSERT INTO userdata VALUES("+newTitle+","+newUsername+","+newPassword+","+newUrl+","+newNote+");";
+        try {
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args){
+        DatabaseConnection newdb = new DatabaseConnection();
+        newdb.createTable();
+        newdb.insert("a","b","c","d","e");
+    }
+
+
 }
 
 
