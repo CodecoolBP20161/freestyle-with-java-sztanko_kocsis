@@ -12,7 +12,6 @@ public class HandleButton {
             MainFrame mainFrame = new MainFrame();
             mainFrame.setVisible(true);
         }
-
     }
 
     public void saveData(String title, String user, String password, String url, String note) {
