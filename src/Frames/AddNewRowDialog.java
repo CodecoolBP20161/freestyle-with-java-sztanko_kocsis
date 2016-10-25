@@ -1,5 +1,8 @@
 package Frames;
 
+import Actions.PerformRedirectToMain;
+import Actions.PerformSaveNewRow;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,8 +12,6 @@ public class AddNewRowDialog {
     public AddNewRowDialog() {
         JDialog dialog = initialize();
         fillWithContent(dialog);
-
-//        dialog.getContentPane().add(new JLabel("hi there"));
         dialog.setSize(400, 400);
         dialog.setResizable(false);
         dialog.setVisible(true);
@@ -26,20 +27,32 @@ public class AddNewRowDialog {
 
     public void fillWithContent(JDialog dialog) {
         JPanel panelLabels = new JPanel();
+        panelLabels.setLayout(new GridLayout(7, 1));
+
         JButton saveButton = new JButton("Save");
-        JButton cancelButton = new JButton("Cancel");
         panelLabels.add(saveButton);
+
+        JTextField title = new JTextField("Title...");
+        panelLabels.add(title);
+
+        JTextField user = new JTextField("User...");
+        panelLabels.add(user);
+
+        JTextField password = new JTextField("Password...");
+        panelLabels.add(password);
+
+        JTextField url = new JTextField("URL...");
+        panelLabels.add(url);
+
+        JTextField note = new JTextField("Note...");
+        panelLabels.add(note);
+
+        JButton cancelButton = new JButton("Cancel");
         panelLabels.add(cancelButton);
-        panelLabels.setLayout(new GridLayout(1, 1));
-        int counter = 2;
-        for (int i = 0; i < this.listOfLabels.length; i++) {
-            panelLabels.setLayout(new GridLayout(counter, 1));
-            JTextField field = new JTextField(listOfLabels[i]);
-            panelLabels.add(field);
-            counter += 1;
-        }
-        panelLabels.setLayout(new GridLayout(counter, 1));
-        panelLabels.add(cancelButton);
+
+        cancelButton.addActionListener(new PerformRedirectToMain(dialog));
+        saveButton.addActionListener(new PerformSaveNewRow(dialog, title, user, password, url, note));
+
         dialog.add(panelLabels);
     }
 }

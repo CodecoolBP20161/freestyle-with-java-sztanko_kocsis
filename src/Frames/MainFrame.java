@@ -33,7 +33,7 @@ public class MainFrame extends Frame {
             panelLabels.add(newLabel);
         }
 
-        SQLiteDatabase myDB = new SQLiteDatabase("bok");
+        SQLiteDatabase myDB = new SQLiteDatabase("kiscica");
         try {
             myDB.insert("i", "l", "k", "l", "l");
             ResultSet result = myDB.selectAll();

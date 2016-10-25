@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class PerformLogin implements ActionListener {
 
     private JTextField dbName;
@@ -22,6 +23,6 @@ public class PerformLogin implements ActionListener {
         String passwordAsText = this.password.getText();
         HandleButton buttonHandler = new HandleButton();
         buttonHandler.checkData(dbNameAsText, passwordAsText);
-        this.current.setVisible(false);
+        this.current.dispose();
     }
 }
