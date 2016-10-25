@@ -17,3 +17,5 @@ hs_err_pid*
 # IntelliJ configuration settings
 .idea
 
+# container of salt, hashed pw and database_name
+config.json
