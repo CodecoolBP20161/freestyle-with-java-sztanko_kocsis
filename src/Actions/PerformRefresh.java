@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PerformRefresh implements ActionListener {
-    private MainFrame mainFrame;
+    MainFrame mainFrame;
 
     public PerformRefresh(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
@@ -14,7 +14,7 @@ public class PerformRefresh implements ActionListener {
 
     public void actionPerformed(ActionEvent actionEvent) {
         this.mainFrame.setVisible(false);
-        MainFrame refreshedMain = new MainFrame();
+        MainFrame refreshedMain = new MainFrame(this.mainFrame.getDbName());
         refreshedMain.setVisible(true);
 
     }
