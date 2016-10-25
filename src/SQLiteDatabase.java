@@ -85,8 +85,13 @@ public class SQLiteDatabase {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        SQLiteDatabase newdb = new SQLiteDatabase("newWorld");
-        newdb.createTable();
+        SQLiteDatabase newdb = new SQLiteDatabase("mynewdb");
+        newdb.update(1,"hufiudshfiushdf","iuh","uhuhuh","oijoij","iuhiuh");
+        ResultSet rs = newdb.selectAll();
+        while (rs.next()){
+            String title = rs.getString("title");
+            System.out.println(title);
+        }
 
     }
 
