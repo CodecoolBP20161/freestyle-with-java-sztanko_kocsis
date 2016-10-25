@@ -3,7 +3,6 @@ package Actions;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class PerformSaveNewRow extends JDialog implements ActionListener {
     private JDialog dialog;
@@ -12,7 +11,6 @@ public class PerformSaveNewRow extends JDialog implements ActionListener {
     private JTextField password;
     private JTextField url;
     private JTextField note;
-    private ArrayList data;
 
     public PerformSaveNewRow(JDialog dialog, JTextField title, JTextField user, JTextField password, JTextField url, JTextField note) {
         this.dialog = dialog;
@@ -31,6 +29,7 @@ public class PerformSaveNewRow extends JDialog implements ActionListener {
         String note = this.note.getText();
         HandleButton buttonHandler = new HandleButton();
         buttonHandler.saveData(title, user, password, url, note);
+
         this.dialog.dispose();
     }
 }
