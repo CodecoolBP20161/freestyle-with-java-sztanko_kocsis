@@ -1,5 +1,6 @@
 package Frames;
 
+import Actions.PerformExit;
 import Actions.PerformRefresh;
 import Actions.PerformAddNewRow;
 import Database.StorageState;
@@ -29,17 +30,22 @@ public class MainFrame extends Frame {
         panelLabels.setLayout(new GridLayout(2, 5));
         JButton addButton = new JButton("Add");
         JButton refreshButton = new JButton("Refresh");
+        JButton exitButton = new JButton("Exit");
 
         panelLabels.add(addButton);
 
-        for (int i = 0; i < 3; i++) {
-            panelLabels.add(new JLabel(" "));
-        }
+        panelLabels.add(new JLabel(" "));
 
         panelLabels.add(refreshButton);
 
+        panelLabels.add(new JLabel(" "));
+
+        panelLabels.add(exitButton);
+
+
         addButton.addActionListener(new PerformAddNewRow());
         refreshButton.addActionListener(new PerformRefresh(this));
+        exitButton.addActionListener(new PerformExit());
 
 
 
@@ -79,6 +85,7 @@ public class MainFrame extends Frame {
 
 
         add(panelLabels, BorderLayout.NORTH);
+
 
         setVisible(true);
     }
