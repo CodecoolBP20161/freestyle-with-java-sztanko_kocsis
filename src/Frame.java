@@ -1,7 +1,11 @@
-package PACKAGE_NAME;
+import javax.swing.*;
 
-/**
- * Created by dorasztanko on 2016.10.25..
- */
-public class Frame {
+abstract class Frame extends JFrame {
+
+    public void initializeFrame() {
+        setTitle("Password Manager");
+        setSize(800, 600);
+        setResizable(false);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
 }
