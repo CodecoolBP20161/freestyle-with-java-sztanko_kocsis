@@ -1,6 +1,6 @@
 package Frames;
 
-import Database.SQLiteDatabase;
+import Actions.PerformRefresh;
 import Actions.PerformAddNewRow;
 import Database.StorageState;
 
@@ -20,14 +20,26 @@ public class MainFrame extends Frame {
 
     }
 
+    public String getDbName(){
+        return this.dbName;
+    }
     public void setLoginLayout() {
         JPanel panelLabels = new JPanel();
 
-        panelLabels.setLayout(new GridLayout(1, 1));
-        JButton addButton = new JButton("Add");
-        panelLabels.add(addButton);
-        addButton.addActionListener(new PerformAddNewRow());
         panelLabels.setLayout(new GridLayout(2, 5));
+        JButton addButton = new JButton("Add");
+        JButton refreshButton = new JButton("Refresh");
+
+        panelLabels.add(addButton);
+
+        for (int i = 0; i < 3; i++) {
+            panelLabels.add(new JLabel(" "));
+        }
+
+        panelLabels.add(refreshButton);
+
+        addButton.addActionListener(new PerformAddNewRow());
+        refreshButton.addActionListener(new PerformRefresh(this));
 
 
 
@@ -38,7 +50,6 @@ public class MainFrame extends Frame {
 
             StorageState myDB = new StorageState();
             myDB.setDatabaseToSQLite(this.dbName);
-
 
             ResultSet result = myDB.selectAll();
             int i = 3;
