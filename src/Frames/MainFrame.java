@@ -2,6 +2,7 @@ package Frames;
 
 import Database.SQLiteDatabase;
 import Actions.PerformAddNewRow;
+import Database.StorageState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +11,10 @@ import java.sql.SQLException;
 
 public class MainFrame extends Frame {
     private String[] listOfLabels = {"Title", "User", "Password", "URL", "Note"};
+    private String dbName;
 
-    public MainFrame() {
+    public MainFrame(String dbName) {
+        this.dbName = dbName;
         initializeFrame();
         setLoginLayout();
 
@@ -33,11 +36,13 @@ public class MainFrame extends Frame {
             panelLabels.add(newLabel);
         }
 
-        SQLiteDatabase myDB = new SQLiteDatabase("kiscica");
-        try {
-            myDB.insert("i", "l", "k", "l", "l");
+            StorageState myDB = new StorageState();
+            myDB.setDatabaseToSQLite(this.dbName);
+
+
             ResultSet result = myDB.selectAll();
             int i = 3;
+        try {
             while (result.next()) {
                 panelLabels.setLayout(new GridLayout(i, 5));
 
@@ -57,12 +62,10 @@ public class MainFrame extends Frame {
                 panelLabels.add(new JLabel(note));
                 i += 1;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
+
 
         add(panelLabels, BorderLayout.NORTH);
 

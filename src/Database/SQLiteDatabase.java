@@ -13,28 +13,45 @@ public class SQLiteDatabase {
         this.URL = "jdbc:sqlite:"+dataBaseName+".db";
     }
 
-    public Connection connection() throws ClassNotFoundException, SQLException {
+    public Connection connection(){
         Connection conn = null;
-        Class.forName(DRIVER);
-        conn = DriverManager.getConnection(URL);
+        try {
+            Class.forName(DRIVER);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            conn = DriverManager.getConnection(URL);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return conn;
     }
 
-    public Statement statementHandler() throws SQLException, ClassNotFoundException {
+    public Statement statementHandler() {
         Connection conn = this.connection();
         Statement stmt = null;
-        stmt = conn.createStatement();
+        try {
+            stmt = conn.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return stmt;
     }
 
-    public ResultSet selectAll() throws SQLException, ClassNotFoundException {
+    public ResultSet selectAll() {
         Statement stmt = this.statementHandler();
         String sql = "SELECT * FROM userdata";
-        ResultSet results = stmt.executeQuery(sql);
+        ResultSet results = null;
+        try {
+            results = stmt.executeQuery(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return results;
     }
 
-    public void createTable() throws SQLException, ClassNotFoundException {
+    public void createTable()  {
         Statement stmt = this.statementHandler();
 
         String sql = "CREATE TABLE userdata "+
@@ -45,12 +62,17 @@ public class SQLiteDatabase {
                 " url VARCHAR(255), " +
                 " note VARCHAR(255));";
 
+        try {
             stmt.executeUpdate(sql);
             stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
 
     }
-    public void insert(String newTitle, String newUsername, String newPassword, String newUrl, String newNote) throws SQLException, ClassNotFoundException {
+    public void insert(String newTitle, String newUsername, String newPassword, String newUrl, String newNote)  {
         Connection conn = this.connection();
         String sql = "INSERT INTO userdata ("
                 + " id,"
@@ -61,7 +83,9 @@ public class SQLiteDatabase {
                 + " note)VALUES ("
                 + "null, ?, ?, ?, ?, ?)";
 
-            PreparedStatement st = conn.prepareStatement(sql);
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(sql);
             st.setString(1, newTitle);
             st.setString(2, newUsername);
             st.setString(3, newPassword);
@@ -69,30 +93,29 @@ public class SQLiteDatabase {
             st.setString(5, newNote);
             st.executeUpdate();
             st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
     }
 
-    public void update(int id,String title,String username,String password,String url,String note) throws SQLException, ClassNotFoundException {
+    public void update(int id,String title,String username,String password,String url,String note)  {
         Connection conn = this.connection();
         String sql = "UPDATE userdata SET title=?,username=?,password=?,url=?,note=? WHERE id=?;";
-        PreparedStatement st = conn.prepareStatement(sql);
-        st.setString(1, title);
-        st.setString(2, username);
-        st.setString(3, password);
-        st.setString(4, url);
-        st.setString(5, note);
-        st.setInt(6, id);
-        st.executeUpdate();
-        st.close();
-    }
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        SQLiteDatabase newdb = new SQLiteDatabase("mynewdb");
-        newdb.update(1,"hufiudshfiushdf","iuh","uhuhuh","oijoij","iuhiuh");
-        ResultSet rs = newdb.selectAll();
-        while (rs.next()){
-            String title = rs.getString("title");
-            System.out.println(title);
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(sql);
+            st.setString(1, title);
+            st.setString(2, username);
+            st.setString(3, password);
+            st.setString(4, url);
+            st.setString(5, note);
+            st.setInt(6, id);
+            st.executeUpdate();
+            st.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
     }
