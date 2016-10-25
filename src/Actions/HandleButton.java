@@ -1,10 +1,7 @@
 package Actions;
 
-import Database.SQLiteDatabase;
 import Database.StorageState;
 import Frames.MainFrame;
-
-import java.sql.SQLException;
 
 // this class represents the different button behaviours
 

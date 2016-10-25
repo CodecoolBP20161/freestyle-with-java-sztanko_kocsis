@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// this class manages dialog window
+
 public class PerformSaveNewRow extends JDialog implements ActionListener {
     private JDialog dialog;
     private JTextField title;

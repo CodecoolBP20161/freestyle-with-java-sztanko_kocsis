@@ -10,8 +10,7 @@ import java.awt.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// this class represents the main window,displays the database content
-
+// this class represents the main window, displays the database content, child of Frame class
 
 public class MainFrame extends Frame {
     private String[] listOfLabels = {"Title", "User", "Password", "URL", "Note"};
@@ -21,12 +20,12 @@ public class MainFrame extends Frame {
         this.dbName = dbName;
         initializeFrame();
         setLoginLayout();
-
     }
 
     public String getDbName(){
         return this.dbName;
     }
+
     public void setLoginLayout() {
         JPanel panelLabels = new JPanel();
 
@@ -45,23 +44,19 @@ public class MainFrame extends Frame {
 
         panelLabels.add(exitButton);
 
-
         addButton.addActionListener(new PerformAddNewRow(this.getDbName()));
         refreshButton.addActionListener(new PerformRefresh(this));
         exitButton.addActionListener(new PerformExit());
-
-
 
         for(int i = 0; i < listOfLabels.length; i++) {
             JLabel newLabel = new JLabel(listOfLabels[i]);
             panelLabels.add(newLabel);
         }
+        StorageState myDB = new StorageState();
+        myDB.setDatabaseToSQLite(this.dbName);
 
-            StorageState myDB = new StorageState();
-            myDB.setDatabaseToSQLite(this.dbName);
-
-            ResultSet result = myDB.selectAll();
-            int i = 3;
+        ResultSet result = myDB.selectAll();
+        int i = 3;
         try {
             while (result.next()) {
                 panelLabels.setLayout(new GridLayout(i, 5));
@@ -86,10 +81,7 @@ public class MainFrame extends Frame {
             e.printStackTrace();
         }
 
-
         add(panelLabels, BorderLayout.NORTH);
-
-
         setVisible(true);
     }
 }

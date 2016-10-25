@@ -5,6 +5,8 @@ import Frames.MainFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// this class is responsible for rebuilding and refreshing main window with up-to-date rows
+
 public class PerformRefresh implements ActionListener {
     MainFrame mainFrame;
 

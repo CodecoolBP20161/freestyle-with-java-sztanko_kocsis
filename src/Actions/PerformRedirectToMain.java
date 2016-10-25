@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// this class hides dialog
+
 public class PerformRedirectToMain extends JDialog implements ActionListener {
     private JDialog dialog;
 

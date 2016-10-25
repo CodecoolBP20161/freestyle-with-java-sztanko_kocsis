@@ -1,17 +1,16 @@
 package Database;
 import java.sql.*;
 
-// this class represents the connection to an sqlite3 database and allows us to run querys on it.
+// this class represents the connection to an sqlite3 database and allows us to run queries on it.
 
 public class SQLiteDatabase {
 
     private String URL;
     private String DRIVER;
 
-
     public SQLiteDatabase(String dataBaseName){
         this.DRIVER = "org.sqlite.JDBC";
-        this.URL = "jdbc:sqlite:"+dataBaseName+".db";
+        this.URL = "jdbc:sqlite:" + dataBaseName + ".db";
     }
 
     //creates and returns the connection object
@@ -29,6 +28,7 @@ public class SQLiteDatabase {
         }
         return conn;
     }
+
     //grabs the connection object,creates and return a statement object to run querys
     public Statement statementHandler() {
         Connection conn = this.connection();
@@ -72,9 +72,6 @@ public class SQLiteDatabase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
     // method to insert new row into the table with prepared statement
@@ -102,8 +99,6 @@ public class SQLiteDatabase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     // method to update an existing row by ID
@@ -124,10 +119,7 @@ public class SQLiteDatabase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
-
-
 }
 
 

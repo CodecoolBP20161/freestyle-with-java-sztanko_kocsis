@@ -10,7 +10,6 @@ public class StorageState {
     public void setDatabaseToSQLite(String databaseName) {
         this.database = new SQLiteDatabase(databaseName);
         this.database.createTable();
-
     }
 
     public void createTable(){

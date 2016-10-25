@@ -6,6 +6,8 @@ import Actions.PerformSaveNewRow;
 import javax.swing.*;
 import java.awt.*;
 
+// this class is responsible for building dialog window, child of Frame class
+
 public class AddNewRowDialog {
     private String[] listOfLabels = {"Title", "User", "Password", "URL", "Note"};
     String dbName;

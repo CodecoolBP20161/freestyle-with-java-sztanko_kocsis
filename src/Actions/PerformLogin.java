@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// this class redirects from login window to main window
 
 public class PerformLogin implements ActionListener {
 
