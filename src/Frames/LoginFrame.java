@@ -29,7 +29,7 @@ public class LoginFrame extends Frame {
         JLabel textPassword = new JLabel("Password:");
         panelLabels.add(textPassword);
 
-        JTextField inputPassword = new JTextField();
+        JPasswordField inputPassword = new JPasswordField();
         panelLabels.add(inputPassword, BorderLayout.EAST);
 
         JButton buttonCancel = new JButton("Cancel");
