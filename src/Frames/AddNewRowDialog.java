@@ -8,8 +8,10 @@ import java.awt.*;
 
 public class AddNewRowDialog {
     private String[] listOfLabels = {"Title", "User", "Password", "URL", "Note"};
+    String dbName;
 
-    public AddNewRowDialog() {
+    public AddNewRowDialog(String dbname) {
+        this.dbName = dbname;
         JDialog dialog = initialize();
         fillWithContent(dialog);
         dialog.setSize(400, 400);
@@ -51,7 +53,7 @@ public class AddNewRowDialog {
         panelLabels.add(cancelButton);
 
         cancelButton.addActionListener(new PerformRedirectToMain(dialog));
-        saveButton.addActionListener(new PerformSaveNewRow(dialog, title, user, password, url, note));
+        saveButton.addActionListener(new PerformSaveNewRow(this.dbName,dialog, title, user, password, url, note));
 
         dialog.add(panelLabels);
     }

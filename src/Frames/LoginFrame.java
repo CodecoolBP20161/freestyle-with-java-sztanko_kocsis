@@ -6,6 +6,8 @@ import Actions.PerformExit;
 import javax.swing.*;
 import java.awt.*;
 
+// this class represents the login window
+
 public class LoginFrame extends Frame {
 
 

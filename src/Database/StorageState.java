@@ -1,6 +1,7 @@
 package Database;
-
 import java.sql.ResultSet;
+
+// State pattern to handle different database engines
 
 public class StorageState {
 

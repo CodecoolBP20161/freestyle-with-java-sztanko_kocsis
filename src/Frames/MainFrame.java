@@ -10,6 +10,9 @@ import java.awt.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// this class represents the main window,displays the database content
+
+
 public class MainFrame extends Frame {
     private String[] listOfLabels = {"Title", "User", "Password", "URL", "Note"};
     private String dbName;
@@ -43,7 +46,7 @@ public class MainFrame extends Frame {
         panelLabels.add(exitButton);
 
 
-        addButton.addActionListener(new PerformAddNewRow());
+        addButton.addActionListener(new PerformAddNewRow(this.getDbName()));
         refreshButton.addActionListener(new PerformRefresh(this));
         exitButton.addActionListener(new PerformExit());
 

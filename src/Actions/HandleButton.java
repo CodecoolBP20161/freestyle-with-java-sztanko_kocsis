@@ -1,9 +1,12 @@
 package Actions;
 
 import Database.SQLiteDatabase;
+import Database.StorageState;
 import Frames.MainFrame;
 
 import java.sql.SQLException;
+
+// this class represents the different button behaviours
 
 public class HandleButton {
 
@@ -14,8 +17,9 @@ public class HandleButton {
         }
     }
 
-    public void saveData(String title, String user, String password, String url, String note) {
-        SQLiteDatabase myDB = new SQLiteDatabase("kiscica");
+    public void saveData(String dbName, String title, String user, String password, String url, String note) {
+        StorageState myDB = new StorageState();
+        myDB.setDatabaseToSQLite(dbName);
         myDB.insert(title, user, password, url, note);
     }
 }

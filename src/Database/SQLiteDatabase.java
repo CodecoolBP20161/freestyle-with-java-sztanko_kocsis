@@ -1,6 +1,7 @@
 package Database;
-
 import java.sql.*;
+
+// this class represents the connection to an sqlite3 database and allows us to run querys on it.
 
 public class SQLiteDatabase {
 
@@ -13,6 +14,7 @@ public class SQLiteDatabase {
         this.URL = "jdbc:sqlite:"+dataBaseName+".db";
     }
 
+    //creates and returns the connection object
     public Connection connection(){
         Connection conn = null;
         try {
@@ -27,7 +29,7 @@ public class SQLiteDatabase {
         }
         return conn;
     }
-
+    //grabs the connection object,creates and return a statement object to run querys
     public Statement statementHandler() {
         Connection conn = this.connection();
         Statement stmt = null;
@@ -39,6 +41,7 @@ public class SQLiteDatabase {
         return stmt;
     }
 
+    // select all rows from the database
     public ResultSet selectAll() {
         Statement stmt = this.statementHandler();
         String sql = "SELECT * FROM userdata";
@@ -51,6 +54,7 @@ public class SQLiteDatabase {
         return results;
     }
 
+    // creates the necessary predefined tables
     public void createTable()  {
         Statement stmt = this.statementHandler();
 
@@ -72,6 +76,8 @@ public class SQLiteDatabase {
 
 
     }
+
+    // method to insert new row into the table with prepared statement
     public void insert(String newTitle, String newUsername, String newPassword, String newUrl, String newNote)  {
         Connection conn = this.connection();
         String sql = "INSERT INTO userdata ("
@@ -100,6 +106,7 @@ public class SQLiteDatabase {
 
     }
 
+    // method to update an existing row by ID
     public void update(int id,String title,String username,String password,String url,String note)  {
         Connection conn = this.connection();
         String sql = "UPDATE userdata SET title=?,username=?,password=?,url=?,note=? WHERE id=?;";
