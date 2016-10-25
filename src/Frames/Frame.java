@@ -1,3 +1,5 @@
+package Frames;
+
 import javax.swing.*;
 
 abstract class Frame extends JFrame {

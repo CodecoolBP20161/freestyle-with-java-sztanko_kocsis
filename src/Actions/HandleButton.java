@@ -1,3 +1,7 @@
+package Actions;
+
+import Frames.MainFrame;
+
 public class HandleButton {
 
     public void checkData(String dbName, String password) {

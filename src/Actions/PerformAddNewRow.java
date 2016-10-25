@@ -1,4 +1,6 @@
-import javax.swing.*;
+package Actions;
+import Frames.AddNewRowDialog;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

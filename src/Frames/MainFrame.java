@@ -1,3 +1,8 @@
+package Frames;
+
+import Database.SQLiteDatabase;
+import Actions.PerformAddNewRow;
+
 import javax.swing.*;
 import java.awt.*;
 import java.sql.ResultSet;
@@ -58,13 +63,6 @@ public class MainFrame extends Frame {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
-
-
-//        JButton buttonSave = new JButton("Save");
-//        buttonSave.addActionListener(new PerformLogin(inputDBName, inputPassword, this));
-//        panelLabels.add(buttonSave);
 
         add(panelLabels, BorderLayout.NORTH);
 

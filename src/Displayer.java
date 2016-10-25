@@ -35,7 +35,7 @@
 //        JButton buttonSave = new JButton("Save");
 //        buttonSave.addActionListener(new EventHandler(inputPassword));
 //        buttonSave.addActionListener(new EventHandler(inputDBName));
-//        buttonCancel.addActionListener(new PerformExit());
+//        buttonCancel.addActionListener(new Actions.PerformExit());
 //
 //        panelLabels.add(buttonSave);
 //

@@ -1,7 +1,12 @@
+package Frames;
+
+import Actions.PerformLogin;
+import Actions.PerformExit;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginFrame extends Frame{
+public class LoginFrame extends Frame {
 
 
     public LoginFrame() {
