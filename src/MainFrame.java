@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class MainFrame extends Frame {
@@ -13,7 +14,12 @@ public class MainFrame extends Frame {
 
     public void setLoginLayout() {
         JPanel panelLabels = new JPanel();
-        panelLabels.setLayout(new GridLayout(1, 5));
+
+        panelLabels.setLayout(new GridLayout(1, 1));
+        JButton addButton = new JButton("Add");
+        panelLabels.add(addButton);
+        addButton.addActionListener(new PerformAddNewRow());
+        panelLabels.setLayout(new GridLayout(2, 5));
 
 
 
@@ -24,8 +30,29 @@ public class MainFrame extends Frame {
 
         SQLiteDatabase myDB = new SQLiteDatabase("bok");
         try {
-            myDB.createTable();
-            myDB.insert("a", "b", "c", "d", "e");
+            myDB.insert("i", "l", "k", "l", "l");
+            ResultSet result = myDB.selectAll();
+            int i = 3;
+            while (result.next()) {
+                panelLabels.setLayout(new GridLayout(i, 5));
+
+                String title = result.getString("title");
+                panelLabels.add(new JLabel(title));
+
+                String username = result.getString("username");
+                panelLabels.add(new JLabel(username));
+
+                String password = result.getString("password");
+                panelLabels.add(new JLabel(password));
+
+                String url = result.getString("url");
+                panelLabels.add(new JLabel(url));
+
+                String note = result.getString("note");
+                panelLabels.add(new JLabel(note));
+                i += 1;
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -33,10 +60,11 @@ public class MainFrame extends Frame {
         }
 
 
+
+
 //        JButton buttonSave = new JButton("Save");
 //        buttonSave.addActionListener(new PerformLogin(inputDBName, inputPassword, this));
 //        panelLabels.add(buttonSave);
-
 
         add(panelLabels, BorderLayout.NORTH);
 

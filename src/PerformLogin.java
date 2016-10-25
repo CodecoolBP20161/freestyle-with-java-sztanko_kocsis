@@ -14,7 +14,7 @@ public class PerformLogin implements ActionListener {
         this.current = current;
     }
 
-    public void actionPerformed(ActionEvent actionEvent1) {
+    public void actionPerformed(ActionEvent actionEvent) {
         String dbNameAsText = this.dbName.getText();
         String passwordAsText = this.password.getText();
         HandleButton buttonHandler = new HandleButton();
