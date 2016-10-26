@@ -2,6 +2,7 @@ package Frames;
 
 import Actions.PerformRedirectToMain;
 import Actions.PerformSaveNewRow;
+import org.jdesktop.swingx.prompt.PromptSupport;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,19 +31,24 @@ public class AddNewRowDialog extends Dialog {
         JButton saveButton = new JButton("Save");
         panelLabels.add(saveButton);
 
-        JTextField title = new JTextField("Title...");
+        JTextField title = new JTextField();
+        PromptSupport.setPrompt("Title...", title);
         panelLabels.add(title);
 
-        JTextField user = new JTextField("User...");
+        JTextField user = new JTextField();
+        PromptSupport.setPrompt("User...", user);
         panelLabels.add(user);
 
-        JTextField password = new JTextField("Password...");
+        JTextField password = new JTextField();
+        PromptSupport.setPrompt("Password...", password);
         panelLabels.add(password);
 
-        JTextField url = new JTextField("URL...");
+        JTextField url = new JTextField();
+        PromptSupport.setPrompt("URL...", url);
         panelLabels.add(url);
 
-        JTextField note = new JTextField("Note...");
+        JTextField note = new JTextField();
+        PromptSupport.setPrompt("Note...", note);
         panelLabels.add(note);
 
         JButton cancelButton = new JButton("Cancel");

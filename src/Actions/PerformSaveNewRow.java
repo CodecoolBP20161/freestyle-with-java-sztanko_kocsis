@@ -32,8 +32,10 @@ public class PerformSaveNewRow extends JDialog implements ActionListener {
         String url = this.url.getText();
         String note = this.note.getText();
         HandleButton buttonHandler = new HandleButton();
-        buttonHandler.saveData(this.dbName,title, user, password, url, note);
+        boolean result = buttonHandler.saveData(this.dbName,title, user, password, url, note);
+        if (result){
+            this.dialog.dispose();
+        }
 
-        this.dialog.dispose();
     }
 }

@@ -11,10 +11,11 @@ import java.io.IOException;
 
 // this class is responsible for handling config.json file for authentication
 
-public class JsonHandler {
+public class JsonHandler{
     private String dbName;
     private String salt;
     private String saltedHashedPassword;
+
 
     public JsonHandler(String dbName, String salt, String saltedHashedPassword) {
         this.dbName = dbName;

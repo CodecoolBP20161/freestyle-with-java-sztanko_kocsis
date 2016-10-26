@@ -7,12 +7,16 @@ import java.awt.*;
 
 public class PopupDialog extends Dialog{
     String message;
+    int width;
+    int height;
 
-    public PopupDialog(String message) {
+    public PopupDialog(String message,int width, int height) {
         this.message = message;
+        this.width = width;
+        this.height = height;
         JDialog dialog = initialize();
         fillWithContent(dialog);
-        dialog.setSize(200, 200);
+        dialog.setSize(this.height, this.width);
         dialog.setResizable(false);
         dialog.setVisible(true);
         dialog.pack();
