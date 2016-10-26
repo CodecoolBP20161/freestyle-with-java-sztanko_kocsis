@@ -23,7 +23,9 @@ public class PerformLogin implements ActionListener {
         String dbNameAsText = this.dbName.getText();
         String passwordAsText = this.password.getText();
         HandleButton buttonHandler = new HandleButton();
-        buttonHandler.checkData(dbNameAsText, passwordAsText);
-        this.current.dispose();
+        boolean canWeProceed = buttonHandler.checkData(dbNameAsText, passwordAsText);
+        if (canWeProceed) {
+            this.current.dispose();
+        }
     }
 }

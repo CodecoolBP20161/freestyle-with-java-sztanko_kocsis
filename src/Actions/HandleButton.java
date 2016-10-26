@@ -2,15 +2,20 @@ package Actions;
 
 import Database.StorageState;
 import Frames.MainFrame;
+import Frames.PopupDialog;
 
 // this class represents the different button behaviours
 
 public class HandleButton {
 
-    public void checkData(String dbName, String password) {
-        if (dbName.length() > 0 && password.length()> 0) {
+    public boolean checkData(String dbName, String password) {
+        if (dbName.length() > 0 && password.length() > 0) {
             MainFrame mainFrame = new MainFrame(dbName);
             mainFrame.setVisible(true);
+            return true;
+        } else {
+            PopupDialog mydialog = new PopupDialog("Fill all fields!");
+            return false;
         }
     }
 

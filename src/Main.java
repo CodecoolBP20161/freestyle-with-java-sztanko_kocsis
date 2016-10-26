@@ -9,11 +9,11 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException, ParseException {
-//        LoginFrame login = new LoginFrame();
+        LoginFrame login = new LoginFrame();
 
-        JsonHandler handler = new JsonHandler("kiskacsa", "élkmlkm", "nkljnkjnkj");
-        String json = handler.encodeJSON();
-        JsonHandler.writeFile(json);
+        //JsonHandler handler = new JsonHandler("kiskacsa", "élkmlkm", "nkljnkjnkj");
+        //String json = handler.encodeJSON();
+        //JsonHandler.writeFile(json);
 //
 //        String password = JsonHandler.decodeJSON("salted_hashed_password");
 //        System.out.println(password);

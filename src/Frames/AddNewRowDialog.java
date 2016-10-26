@@ -8,7 +8,7 @@ import java.awt.*;
 
 // this class is responsible for building dialog window, child of Frame class
 
-public class AddNewRowDialog {
+public class AddNewRowDialog extends Dialog {
     private String[] listOfLabels = {"Title", "User", "Password", "URL", "Note"};
     String dbName;
 
@@ -22,12 +22,6 @@ public class AddNewRowDialog {
         dialog.pack();
     }
 
-    public JDialog initialize() {
-        JDialog dialog = new JDialog();
-        dialog.setEnabled(true);
-        dialog.setModal(true);
-        return dialog;
-    }
 
     public void fillWithContent(JDialog dialog) {
         JPanel panelLabels = new JPanel();

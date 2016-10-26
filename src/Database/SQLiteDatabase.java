@@ -70,7 +70,7 @@ public class SQLiteDatabase {
             stmt.executeUpdate(sql);
             stmt.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
     }
 
